@@ -1,0 +1,47 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="webjars/bootstrap/5.2.3/js/bootstrap.min.js"></script>
+
+    <title>Index</title>
+</head>
+<body>
+        <form action="#" th:action="@{/index}" th:object="${user}" method="post">
+            <div class="wrapper">
+                <h1>Create Account</h1>
+                <div th:if="${message}" th:text="${message}" class="alert alert-danger" role="alert">
+                </div>
+                <div class="mb-3">
+                    <label>
+                        <input type="text" class="form-control" aria-describedby="firstname" placeholder="Firstname" th:field="*{firstname}">
+                    </label>
+                    <label>
+                        <input type="text" class="form-control" aria-describedby="lastname" placeholder="Lastname" th:field="*{lastname}">
+                    </label>
+                </div>
+                <div class="mb-3">
+                    <label>
+                        <input type="text" class="form-control" id="username" aria-describedby="username" placeholder="Username" th:field="*{username}">
+                    </label>
+                </div>
+                <div class="mb-3">
+                    <label>
+                        <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="Email" th:field="*{email}">
+                    </label>
+                </div>
+                <div class="mb-3">
+                    <label>
+                        <input type="password" class="form-control" id="password" placeholder="Password" th:field="*{password}">
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </form>
+</body>
+</html>
