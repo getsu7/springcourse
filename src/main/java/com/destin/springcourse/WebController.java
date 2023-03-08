@@ -10,7 +10,7 @@ import java.util.ArrayList;
 @Controller
 public class WebController {
 
-    private final ArrayList<User> userList = new ArrayList<>();
+    private ArrayList<User> userList = new ArrayList<>();
 
     @GetMapping(value = "/index")
     public String index(Model model) {
@@ -20,22 +20,12 @@ public class WebController {
 
     @PostMapping(value = "/index")
     public String userFormSubmit(@ModelAttribute User user, Model model) throws IOException {
-        if(RequestManager.mailValidityVerification(user.getEmail())) {
-            for (User cursor : userList) {
-                if (user.getEmail().equals(cursor.getEmail())) {
-                    model.addAttribute("message", "This email is already used");
-                    return "index";
-                }
-                if (user.getUsername().equals(cursor.getUsername())) {
-                    model.addAttribute("message", "This username is already used");
-                    return "index";
-                }
-            }
+        System.out.println(user);
+        if (UserVerification.userFormVerification(user, userList, model)){
             user.setId(userList.size());
             userList.add(user);
-            return "redirect:/list";
+            return "result";
         }
-        model.addAttribute("message", "This email is not valid");
         return "index";
     }
 

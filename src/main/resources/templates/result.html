@@ -23,11 +23,11 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="user: ${userList}">
-        <td th:text="${user.id}"></td>
-        <td th:text="${user.firstname}"></td>
-        <td th:text="${user.lastname}"></td>
-        <td th:text="${user.username}"></td>
+    <tr th:each="u: ${userList}">
+        <td th:text="${u.id}"></td>
+        <td th:text="${u.firstname}"></td>
+        <td th:text="${u.lastname}"></td>
+        <td th:text="${u.username}"></td>
     </tr>
     </tbody>
 
